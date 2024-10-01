@@ -1,2 +1,3 @@
-# Cart 253 ArtJam
- ArtJam Project that has a clock that changes time and a house that turns their light on and off.
+# Template p5 project
+
+This is the README file for the entire project. For more official projects you should write information here about the nature of the project, your name, any special explanations of how the project works, etc.
