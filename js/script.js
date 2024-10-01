@@ -10,7 +10,6 @@
 
 //Creates the starting hours and minutes of the clock.
 
-
 let hours = 12;
 let minutes = 0;
 
@@ -18,6 +17,8 @@ let minutes = 0;
 
 const color1 = [161, 211, 255];
 const color2 = [26, 42, 87];
+
+//Sets the colors for the window being on and off
 
 /**
  * Creates the canvas and sets the projets units to degrees.
@@ -36,11 +37,18 @@ function draw() {
 
     background(bgColor);
 
+    // Draws the window that changes color based on the time of day
+    let rectColor = (hours >= 6 && hours < 20) ? color(255, 230, 5) : color(0, 0, 0);
+    fill(rectColor);
+    noStroke();
+    rect(100, height / 2 - 50, 100, 100);
+
     //Draws the clock
     push();
     translate(900, 900);
     drawClock();
     pop();
+
 }
 
 /**
