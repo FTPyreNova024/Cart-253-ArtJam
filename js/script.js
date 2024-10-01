@@ -13,6 +13,11 @@
 let hours = 12;
 let minutes = 0;
 
+//Sets the color fo the house
+
+const houseColor = [255, 228, 166];
+const roofColor = [166, 113, 70];
+
 //creates the two ends of the color spectrum for the background as arrays.
 
 const color1 = [161, 211, 255];
@@ -35,13 +40,15 @@ function draw() {
     let timeRatio = (hours * 60 + minutes) / (24 * 60);
     let bgColor = getBackgroundColor(timeRatio);
 
+    //Sets the background color
     background(bgColor);
 
-    // Draws the window that changes color based on the time of day
-    let rectColor = (hours >= 6 && hours < 20) ? color(255, 230, 5) : color(0, 0, 0);
-    fill(rectColor);
-    noStroke();
-    rect(100, height / 2 - 50, 100, 100);
+    //Draws the house and the window
+    drawHouse();
+    drawWindow();
+
+    //Draws the grass
+    drawGrass();
 
     //Draws the clock
     push();
@@ -124,4 +131,38 @@ function advanceTime() {
             hours = 0;
         }
     }
+}
+
+function drawHouse() {
+    // Draws the house
+    push();
+    fill(houseColor);
+    noStroke();
+    rect(50, 400, 450, 300);
+    pop();
+
+    push();
+    fill(roofColor);
+    noStroke();
+    triangle(0, 400, 275, 200, 550, 400);
+    pop();
+}
+
+function drawGrass() {
+    // Draws the grass
+    push();
+    fill(55, 128, 28);
+    noStroke();
+    rect(0, 700, 1000, 300);
+    pop();
+}
+
+function drawWindow() {
+    // Draws the window that changes color based on the time of day
+    let rectColor = (hours >= 6 && hours < 20) ? color(255, 230, 5) : color(0, 0, 0);
+    push();
+    fill(rectColor);
+    noStroke();
+    rect(100, 450, 150, 100);
+    rect(300, 450, 150, 100);
 }
