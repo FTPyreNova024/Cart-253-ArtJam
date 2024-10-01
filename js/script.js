@@ -27,3 +27,26 @@ function setup() {
     createCanvas(1000, 1000);
     angleMode(DEGREES);
 }
+
+function draw() {
+
+    //Sets the time of day in intervals of 24hours and 30 minutes to correspond to the time of day.
+    let timeRatio = (hours * 60 + minutes) / (24 * 60);
+    let bgColor = getBackgroundColor(timeRatio);
+
+    background(bgColor);
+
+    //Draws the clock
+    drawClock();
+}
+
+function getBackgroundColor(t) {
+    //Devides the time in a range of 0 to 1 and makes the time jump from .99 to .02 to correspond to the time of day
+    let phase = t < 0.5 ? t * 2 : (1 - t) * 2;
+
+    //Sets the color range depending on the time of day. By comparing each value in the arrays of color1 and color2
+    let r = lerp(color1[0], color2[0], phase);
+    let g = lerp(color1[1], color2[1], phase);
+    let b = lerp(color1[2], color2[2], phase);
+    return color(r, g, b);
+}
