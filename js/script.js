@@ -17,7 +17,7 @@ let minutes = 0;
 //creates the two ends of the color spectrum for the background as arrays.
 
 const color1 = [161, 211, 255];
-const color2 = [26, 42, 255];
+const color2 = [26, 42, 87];
 
 /**
  * Creates the canvas and sets the projets units to degrees.
@@ -43,6 +43,10 @@ function draw() {
     pop();
 }
 
+/**
+ * The system that will determin if it is day or night.
+ */
+
 function getBackgroundColor(t) {
     //Devides the time in a range of 0 to 1 and makes the time jump from .99 to .02 to correspond to the time of day
     let phase = t < 0.5 ? t * 2 : (1 - t) * 2;
@@ -53,6 +57,10 @@ function getBackgroundColor(t) {
     let b = lerp(color1[2], color2[2], phase);
     return color(r, g, b);
 }
+
+/**
+ * The clock and the motion of the hands
+ */
 
 function drawClock() {
 
@@ -82,4 +90,30 @@ function drawClock() {
     fill(0);
     noStroke();
     ellipse(0, 0, 7);
+}
+
+/**
+ *  Determins if the clock is pressed and what to do if it is.
+ */
+
+function mousePressed() {
+    let d = dist(mouseX, mouseY, 900, 900);
+    if (d < 50) {
+        advanceTime();
+    }
+}
+
+/**
+ * Sets the logic for the minutes and hours
+ */
+
+function advanceTime() {
+    minutes += 30;
+    if (minutes >= 60) {
+        minutes -= 60;
+        hours += 1;
+        if (hours >= 24) {
+            hours = 0;
+        }
+    }
 }
