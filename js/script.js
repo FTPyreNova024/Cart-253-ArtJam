@@ -1,9 +1,9 @@
 /**
- * Leaving
+ * Magic Clock
  * 
  * By Daniel Munoz C
  * 
- * A representation of two things changing by their distance.
+ * A clock that can change the time of day by clicking on the clock face.
  */
 
 "use strict";
