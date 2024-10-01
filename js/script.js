@@ -87,6 +87,7 @@ function drawClock() {
 
     //Hour hand
     push();
+    //converts the hour and minute values into angles between -90 and 270.
     rotate(map(hours % 12 + minutes / 60, 0, 12, -90, 270));
     stroke(0);
     strokeWeight(4);
