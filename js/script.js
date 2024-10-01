@@ -65,7 +65,21 @@ function drawClock() {
     //Hour hand
     push();
     rotate(map(hours % 12 + minutes / 60, 0, 12, -90, 270));
+    stroke(0);
     strokeWeight(4);
-    line(900, 0, 30, 0)
+    line(0, 0, 30, 0)
     pop();
+
+    //Minute Hand
+    push();
+    rotate(map(minutes, 0, 60, -90, 270));
+    stroke(0);
+    strokeWeight(2);
+    line(0, 0, 40, 0);
+    pop();
+
+    //Center dot
+    fill(0);
+    noStroke();
+    ellipse(0, 0, 7);
 }
