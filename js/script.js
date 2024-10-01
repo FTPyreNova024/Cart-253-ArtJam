@@ -37,7 +37,10 @@ function draw() {
     background(bgColor);
 
     //Draws the clock
+    push();
+    translate(900, 900);
     drawClock();
+    pop();
 }
 
 function getBackgroundColor(t) {
@@ -49,4 +52,20 @@ function getBackgroundColor(t) {
     let g = lerp(color1[1], color2[1], phase);
     let b = lerp(color1[2], color2[2], phase);
     return color(r, g, b);
+}
+
+function drawClock() {
+
+    //Clock face 
+    fill(255);
+    noStroke();
+    ellipse(0, 0, 100);
+
+
+    //Hour hand
+    push();
+    rotate(map(hours % 12 + minutes / 60, 0, 12, -90, 270));
+    strokeWeight(4);
+    line(900, 0, 30, 0)
+    pop();
 }
