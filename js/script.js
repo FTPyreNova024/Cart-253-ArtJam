@@ -166,4 +166,5 @@ function drawWindow() {
     noStroke();
     rect(100, 450, 150, 100);
     rect(300, 450, 150, 100);
+    pop();
 }
